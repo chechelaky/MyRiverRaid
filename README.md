@@ -5,6 +5,6 @@ um simples exemplo utilizando IrrLitch para renderizar um avião movendo-se por 
 O mapa foi construído com o Tiled Map Editor e o código traduz imagens 2d em seu equivalente em 3D.
 
 Q muda a camera (3 ângulos)<br>
-T sobe
-G desce
-setas (cima, baixo, esquerda, direita) movimento
+T sobe<br>
+G desce<br>
+setas (cima, baixo, esquerda, direita) movimento<br>
