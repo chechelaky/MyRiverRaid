@@ -4,22 +4,15 @@
 
 ; #FUNCTION# ====================================================================================================================
 ; Name ..........: MyRiverRaid
-; Description ...: um simples exemplo utilizando IrrLitch para renderizar um avi„o movendo-se por um mapa finito em loop infinito.
-;                  O mapa foi construÌdo com o Tiled Map Editor e o cÛdigo traduz imagens 2d em seu equivalente em 3D.
-
-;~ Objetos .obj criados no Google SketchUp
-;~ Imagens PNG criadas no PhotoFiltre Studio X
-
-
 ; Author ........: Luigi (Luismar Chechelaky)
-; Link ..........:
-
-
-;~ Q muda a camera (3 ‚ngulos)
-;~ T sobe
-;~ G desce
-
-
+; Description ...: um simples exemplo utilizando IrrLitch para renderizar um avi√£o movendo-se por um mapa finito em loop infinito.
+;                  O mapa foi constru√≠do com o Tiled Map Editor e o c√≥digo traduz imagens 2d em seu equivalente em 3D.
+; Link ..........: https://github.com/chechelaky/MyRiverRaid/
+;
+; Q muda a camera (3 √¢ngulos)
+; T sobe
+; G desce
+; setas (cima, baixo, esquerda, direita) movimento
 ; ===============================================================================================================================
 
 #include-once
@@ -40,9 +33,9 @@ Global $hDLL = DllOpen("user32.dll")
 Global $aKeys[5][9] = [ _
 		[8], _ ; quantidade de elementos do array
 		[25, 26, 27, 28, 41, 53, 44, 47, 54], _ ; teclas a serem utilizadas
-		[1, 1, 1, 1, 1, 1, 1, 1, 1], _ ; estado das teclas: 1 n„o pressionada, 9 presssionada
-		[0, 0, 0, 0, 100, 200, 300, 400, 400], _ ; delay de reutilizaÁ„o das teclas
-		[0, 0, 0, 0, TimerInit(), TimerInit(), TimerInit(), TimerInit(), TimerInit()] _ ; momento da ˙ltima utilizaÁ„o
+		[1, 1, 1, 1, 1, 1, 1, 1, 1], _ ; estado das teclas: 1 n√£o pressionada, 9 presssionada
+		[0, 0, 0, 0, 100, 200, 300, 400, 400], _ ; delay de reutiliza√ß√£o das teclas
+		[0, 0, 0, 0, TimerInit(), TimerInit(), TimerInit(), TimerInit(), TimerInit()] _ ; momento da √∫ltima utiliza√ß√£o
 		]
 
 Global $oMAP
@@ -168,7 +161,7 @@ While _IrrRunning()
 		_IrrSetCameraTarget($h_Camera, 0, 16, $dy)
 
 		_Irr2DFontDraw($hFont, "FPS       [ " & _IrrGetFPS() & " ]", 10, 10, 250, 96)
-		_Irr2DFontDraw($hFont, "DIST¬NCIA [ " & StringFormat("%.2f", $dy) & " ]", 10, 30, 250, 96)
+		_Irr2DFontDraw($hFont, "DIST√ÇNCIA [ " & StringFormat("%.2f", $dy) & " ]", 10, 30, 250, 96)
 		_Irr2DFontDraw($hFont, "Altitude  [ " & StringFormat("%.2f", $a_ACTOR[0][$xPOSY]) & " ]", 10, 50, 250, 96)
 		_IrrEndScene()
 		$aTimer[0][1] = TimerInit()
@@ -191,7 +184,7 @@ Func _GAME_MovePlayer($ID = 0)
 			$a_ACTOR[0][$xPOSX] += $a_ACTOR[0][8]
 			If $a_ACTOR[0][$xPOSX] > $aLim[3] Then $a_ACTOR[0][$xPOSX] = $aLim[3]
 			If $a_ACTOR[0][$xANGL] > -30 Then $a_ACTOR[0][$xANGL] -= 1
-		Case 1119 ; Tr·z
+		Case 1119 ; Tr√°z
 			$dy -= 0.075
 		Case 9911 ; Frente-Esquerda
 			$dy += $a_ACTOR[0][8]
@@ -203,10 +196,10 @@ Func _GAME_MovePlayer($ID = 0)
 			$a_ACTOR[0][$xPOSX] += $a_ACTOR[0][9]
 			If $a_ACTOR[0][$xPOSX] > $aLim[3] Then $a_ACTOR[0][$xPOSX] = $aLim[3]
 			If $a_ACTOR[0][$xANGL] > -30 Then $a_ACTOR[0][$xANGL] -= 1
-		Case 1199 ; Tr·z-Direita
+		Case 1199 ; Tr√°z-Direita
 			$dy -= 0.075
 			$a_ACTOR[0][$xPOSX] += $a_ACTOR[0][9]
-		Case 9119 ; Tr·z-Esquerda
+		Case 9119 ; Tr√°z-Esquerda
 			$dy -= 0.075
 			$a_ACTOR[0][$xPOSX] -= $a_ACTOR[0][9]
 		Case Else
